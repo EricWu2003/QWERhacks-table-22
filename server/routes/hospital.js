@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { ObjectID } = require('bson');
-let Users= require('../models/users.model')
+let Users= require('../models/hospital.model')
 
 router.route('/').get((reg, res) => {
     Users.find()                             
@@ -20,3 +20,5 @@ router.route('/add').post((req,res) => {
     .then(()=> res.json('User added'))
     .catch(err=> res.status(400).json('Error' + err));
 });
+
+module.exports = router;

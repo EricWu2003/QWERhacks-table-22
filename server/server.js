@@ -3,6 +3,8 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const { application } = require('express');
 require('dotenv').config();
+const { MongoClient } = require("mongodb");
+
 
 const qwer_hacks = express ();
 const port = process.envPort|| 5056;
@@ -10,9 +12,14 @@ const port = process.envPort|| 5056;
 qwer_hacks.use(cors());
 qwer_hacks.use(express.json());
 
-const url= "mongodb+srv://LiyuZer:bFnkjqtwOXOvlwh6@blink.do1er.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const uri="mongodb+srv://user:WvCWTl8M71iPfBTA@cluster0.rgjjbva.mongodb.net/test?retryWrites=true&w=majority";
 
-mongoose.connect(url);
+const client = new MongoClient(uri);
+ 
+     client.connect();
+
+
+mongoose.connect(uri);
 
 
 const connection = mongoose.connection;

@@ -5,7 +5,7 @@ var Schema= mongoose.Schema;
 
 var hospitalSchema=new Schema({
     hospial_name:{type: String, required: true},
-    hopital_location:{type: string, required: true},
+    hopital_location:{type: String, required: true},
     hospital_rating:{type: Number, required: true},
     comments: {type: Array, required: true},
 }, {
