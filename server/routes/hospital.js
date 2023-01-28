@@ -18,7 +18,7 @@ router.route('/add').post((req,res) => {
     const hospital_rating = req.body.hospital_rating;
     const comments = req.body.comments;
 
-    const new_hospital = new Users({
+    const new_hospital = new hospital({
         hospital_name,
         hospital_location,
         hospital_rating,
@@ -37,9 +37,12 @@ router.route('/').get((reg, res) => {
 
 router.route('/ratings/:search').get((req, res) => {
     var query = { hospital_rating: req.params.search };
-    hospital.find(query).fetch(function(err, result) {
+
+    hospital.find(query).exec(function(err, messages) { 
         res.json(messages)
-      });
+    
+    })
+
 });
 
 module.exports = router;
