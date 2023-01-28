@@ -74,8 +74,16 @@ export default function Signup() {
           />
         </FormControl>
 
-        {/* login button */}
+        {/* signup button */}
         <Button variant="contained">Sign up</Button>
+
+        {/* return to login */}
+        <Typography>Already a user? Click here to {}
+          <Link href="/login">
+            Login
+          </Link>
+          .
+        </Typography>
       </Stack>
     </Box>
   );
