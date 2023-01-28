@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const { application } = require('express');
 require('dotenv').config();
 
-const blinkApp = express ();
+const qwer_hacks = express ();
 const port = process.envPort|| 5056;
 
 qwer_hacks.use(cors());
