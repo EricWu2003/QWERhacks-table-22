@@ -8,7 +8,7 @@ export default function Root() {
     <ListItem>Annie Lu</ListItem>
     <ListItem>Kyle Machnicki</ListItem>
     <ListItem>Eric Wu</ListItem>
-    <ListItem>Liyu Zariman</ListItem>
+    <ListItem>Liyu Zerihun</ListItem>
     </List>
     <p>This project is a work-in-progress. 
       Ideally, users would be able to sign up for an account, 
