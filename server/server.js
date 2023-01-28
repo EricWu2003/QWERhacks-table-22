@@ -7,7 +7,7 @@ const { MongoClient } = require("mongodb");
 
 
 const qwer_hacks = express ();
-const port = process.envPort|| 5056;
+const port = process.envPort|| 5060;
 
 qwer_hacks.use(cors());
 qwer_hacks.use(express.json());
@@ -31,7 +31,7 @@ connection.once('open', () =>{
 const hospital_router= require('./routes/hospital');
 const user_router= require('./routes/user');
 
-qwer_hacks.use('/messages', hospital_router);
+qwer_hacks.use('/hospitals', hospital_router);
 qwer_hacks.use('/users', user_router);
 
 qwer_hacks.listen(port, ()=> {
