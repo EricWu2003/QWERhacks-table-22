@@ -64,10 +64,10 @@ export default function HospitalPage() {
       </Typography>
       {isHospitalListLoading && <CircularProgress />}
 
-      <List>
+      <List sx={{ listStyleType: 'disc', pl: 4 }}>
         {comments.map(comment => {
           return (
-            <ListItem>
+            <ListItem sx={{ display: 'list-item' }}>
               {comment}
             </ListItem>
           );
