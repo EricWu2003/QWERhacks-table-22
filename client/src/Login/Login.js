@@ -33,8 +33,8 @@ export default function Login() {
       // Hardcode response.data type as Array
       // Find from array by user+pass key
       // If match, login, if no match, restart
-      console.log(response.data);
-      if (0==1) {
+      console.log(Array.from(response.data).find(el => requestBody.username === el.username && requestBody.password === el.password));
+      if (Array.from(response.data).find(el => requestBody.username === el.username && requestBody.password === el.password) != null) {
         alert("Successfully logged in!")
         window.location.href="/";
       } else {
@@ -42,7 +42,7 @@ export default function Login() {
         // clear current user/pass inputs (useful or no?)
         setUserName(""); // Need to attach to text field
         setPassword(""); // Need to attach to text field
-        //window.location.href="/login";
+        window.location.href="/login";
 
         // error message appears
         alert("Username and password do not match any known login credentials.");
