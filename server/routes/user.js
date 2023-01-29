@@ -2,13 +2,6 @@ const router = require('express').Router();
 const { ObjectID } = require('bson');
 let Users= require('../models/user.model')
 
-router.route('/').get((reg, res) => {
-    Users.find()                             
-    .then(users => res.json(users))       
-    .catch(err => res.status(400).json('Error: ' + err));
-});
-
-
 
 
 router.route('/add').post((req,res) => {
@@ -36,9 +29,8 @@ router.route('/get').get((req,res) => {
         hospital_rating,
         comments,
     });
-    new_hospital.save()
-    .then(()=> res.json('Hospital added'))
-    .catch(err=> res.status(400).json('Error' + err));
+   
+    
 });
 
 
