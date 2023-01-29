@@ -43,8 +43,8 @@ router.route('/comments/:hospital_name').post((req, res) => {
 
 
        hospital.updateOne(
-        {hospital_name: req.body.hospital_name},
-        {$push: { comments: req.body.comments}}
+        {hospital_name: req.params.hospital_name},
+        {$push: { comments: "hello"}}
     )
 
    
