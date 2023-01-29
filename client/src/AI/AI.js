@@ -7,11 +7,11 @@ import axios from "axios";
 
 
 
-
+const encodedKey=btoa("Bearer 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");
 
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
-  apiKey: "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",
+  apiKey: "Bearer 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",
 });
 const openai = new OpenAIApi(configuration);
 
