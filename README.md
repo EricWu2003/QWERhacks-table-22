@@ -4,3 +4,8 @@ This is the project created during the QWER Hacks hackathon (January 28-29 2023)
 
 This is a web application which allows users to leave reviews on different healthcare providers.
 
+Authors: 
+Annie Lu,
+Kyle Machnicki,
+Liyu Zerihun,
+Eric Wu
