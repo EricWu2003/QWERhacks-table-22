@@ -1,10 +1,9 @@
 const router = require('express').Router();
 const { ObjectID } = require('bson');
 const hospital = require('../models/hospital.model');
-let Users= require('../models/hospital.model')
 
 router.route('/').get((reg, res) => {
-    Users.find()                             
+    hospital.find()                             
     .then(users => res.json(users))       
     .catch(err => res.status(400).json('Error: ' + err));
 });
