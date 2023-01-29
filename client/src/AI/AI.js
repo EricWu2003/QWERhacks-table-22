@@ -11,10 +11,10 @@ const encodedKey=btoa("Bearer sk-EtPrgxZNKglwTayI2ceDT3BlbkFJd89Iho1AF1h4Xwy8DEx
 
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
-  apiKey: "Bearer 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",
+  organization: 'org-CfJe8zNuipwuAC27L7XhjtQH',
+  apiKey: "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",
 });
 const openai = new OpenAIApi(configuration);
-
 
 
 
@@ -25,7 +25,7 @@ const openai = new OpenAIApi(configuration);
 export default function AI() {
 
   const [currentQuery, setCurrentQuery] = React.useState("");
-  const [currentResponse, setCurrentResponse] = React.useState("asdsasdfadsf");
+  const [currentResponse, setCurrentResponse] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
 
 
@@ -74,12 +74,14 @@ export default function AI() {
 
     const response = openai.createCompletion({
       model: "text-davinci-003",
-      prompt: "Say this is a test",
-      temperature: 0,
-      max_tokens: 7,
+      prompt: currentQuery,
+      temperature: 0.7,
+      max_tokens: 1000,
     }).then((response) => {
       console.log("success");
-      console.log(response);
+      console.log(response.data.choices);
+      setCurrentResponse(response.data.choices[0].text);
+      setIsLoading(false);
     })
     .catch((error) => {
       console.log(error)
@@ -118,7 +120,7 @@ export default function AI() {
       {isLoading && <CircularProgress />}
 
       {!isLoading &&
-        <Typography>
+        <Typography style={{whiteSpace: 'pre-line'}}>
           {currentResponse}
         </Typography>
       }
