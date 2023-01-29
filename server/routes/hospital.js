@@ -37,21 +37,25 @@ router.route('/').get((reg, res) => {
     })
 });
 
-router.route('/comments/:hospital_name').post((req, res) => {
-    var query = { hospital_name: req.params.hospital_name};
+router.route('/comments/').post((req, res) => {
+    // var query = { hospital_name: req.params.name};
 
+    hospital.updateOne(
+        {"hospital_name": req.body.hospital_name},
+        {$push: { comments: req.body.comment}}
+    ).exec((err, result) => {
+        if (err) {
+            res.status(500).json({error: err});
+            return;
+        }
 
-       hospital.updateOne(
-        {hospital_name: req.params.hospital_name},
-        {$push: { comments: "hello"}}
-    )
+        res.json({message: 'Comment added successfully'});
+    });
 
-   
-    res.json(req.body.comments)
-});
+   });
 
 router.route('/ratings').get((req, res) => {
-    var query = { hospital_rating: 1 };
+    var query = { hospital_rating: -1 };
     hospital.find().sort( query ).exec(function(err, messages) { 
         res.json(messages)
     
