@@ -9,6 +9,7 @@ import Login from "./Login/Login.js"
 import Signup from "./Login/Signup.js"
 import Navbar from "./Navbar/Navbar.js";
 import About from "./About/About.js";
+import HospitalPage from "./HospitalPage/HospitalPage.js";
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
         <Route path="about" element={<About />} />
+        <Route path="hospitals/:hospital" element={<HospitalPage />} />
       </>
     )
   );

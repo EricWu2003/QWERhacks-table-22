@@ -1,7 +1,9 @@
 import React from "react";
 import 
 {
-  Box, Typography, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, CircularProgress
+  Box, Typography, TableContainer, Table,
+  TableHead, TableRow, TableCell, TableBody, CircularProgress,
+  Link,
 } from '@mui/material';
 import axios from "axios";
 import Paper from '@mui/material/Paper';
@@ -50,7 +52,9 @@ export default function Root() {
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.hospital_name}
+                <Link href={`/hospitals/${row.hospital_name}`}>
+                  {row.hospital_name}
+                </Link>
               </TableCell>
               <TableCell align="right">{row.hospital_location}</TableCell>
               <TableCell align="right">{row.hospital_rating}</TableCell>

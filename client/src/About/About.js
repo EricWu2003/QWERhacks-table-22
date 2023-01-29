@@ -1,7 +1,7 @@
 import { List, ListItem, Box } from "@mui/material";
 import React from "react";
 
-export default function Root() {
+export default function About() {
   return (
     <Box m={2}>
       <p>We are at the 22nd table! </p>
