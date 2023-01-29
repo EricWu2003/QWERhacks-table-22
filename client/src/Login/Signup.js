@@ -42,14 +42,32 @@ export default function Signup() {
       username: userName,
       password: password
     }
-    axios.post('http://localhost:8000/users/add', requestBody)
+    // Check for match already
+    axios.get('http://localhost:8000/users/', requestBody)
     .then(function (response) {
-      alert("Successfully signed up!")
+      // Hardcode response.data type as Array
+      // Find from array by user+pass key
+      // If match, login, if no match, restart
       console.log(response);
-      window.location.href="/";
+      console.log(Array.from(response.data).find(el => requestBody.username === el.username));
+      if (Array.from(response.data).find(el => requestBody.username === el.username) != null) {
+        alert("Sorry, that username is taken!")
+        window.location.href="/signup"; 
+      } else {
+        axios.post('http://localhost:8000/users/add', requestBody)
+        .then(function (response) {
+          alert("Successfully signed up!")
+          console.log(response);
+          window.location.href="/";
+        })
+        .catch(function (error) {
+          alert("Sorry, error signing up")
+          console.log(error);
+        });
+      }
     })
     .catch(function (error) {
-      alert("Sorry, error signing up")
+      alert("Signup failed")
       console.log(error);
     });
   }

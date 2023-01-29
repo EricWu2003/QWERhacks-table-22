@@ -33,10 +33,13 @@ export default function Login() {
       // Hardcode response.data type as Array
       // Find from array by user+pass key
       // If match, login, if no match, restart
+      console.log(response);
       console.log(Array.from(response.data).find(el => requestBody.username === el.username && requestBody.password === el.password));
       if (Array.from(response.data).find(el => requestBody.username === el.username && requestBody.password === el.password) != null) {
         alert("Successfully logged in!")
-        window.location.href="/";
+        window.location.href="/"; 
+        // Maintain login info?
+        // Is home view-only when not logged in?
       } else {
         // If no match
         // clear current user/pass inputs (useful or no?)
