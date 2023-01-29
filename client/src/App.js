@@ -11,6 +11,21 @@ import Navbar from "./Navbar/Navbar.js";
 import About from "./About/About.js";
 import HospitalPage from "./HospitalPage/HospitalPage.js";
 
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { green, blue } from '@mui/material/colors';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: green[800],
+    },
+    secondary: {
+      main: blue[500],
+    },
+  },
+});
+
+
 function App() {
 
   const router = createBrowserRouter(
@@ -28,8 +43,10 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
-      <RouterProvider router={router} />
+      <ThemeProvider theme={theme}>
+        <Navbar />
+        <RouterProvider router={router} />
+      </ThemeProvider>
     </div>
   );
 }
