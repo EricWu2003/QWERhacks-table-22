@@ -14,19 +14,19 @@ import HospitalPage from "./HospitalPage/HospitalPage.js";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { green, blue } from '@mui/material/colors';
 
+import useMediaQuery from '@mui/material/useMediaQuery';
+import CssBaseline from '@mui/material/CssBaseline';
+import React from "react";
+
+
 const theme = createTheme({
-  palette: {
-    primary: {
-      main: green[800],
-    },
-    secondary: {
-      main: blue[500],
-    },
-  },
+ 
 });
 
 
 function App() {
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -40,10 +40,27 @@ function App() {
     )
   );
 
+  const theme = React.useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode: prefersDarkMode ? 'dark' : 'light',
+          primary: {
+            main: green[800],
+          },
+          secondary: {
+            main: blue[500],
+          },
+        },
+      }),
+    [prefersDarkMode],
+  );
+
 
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
+        <CssBaseline />
         <Navbar />
         <RouterProvider router={router} />
       </ThemeProvider>
