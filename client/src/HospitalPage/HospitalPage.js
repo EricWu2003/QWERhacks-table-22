@@ -1,4 +1,6 @@
-import { Typography, Box, CircularProgress, List, ListItem } from "@mui/material";
+import {
+  Typography, Box, CircularProgress, List, ListItem, TextField, Button
+} from "@mui/material";
 import React from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -9,6 +11,28 @@ export default function HospitalPage() {
 
   const [hospitals, setHospitals] = React.useState([]);
   const [isHospitalListLoading, setIsHospitalListLoading] = React.useState(true);
+
+  const [currentComment, setCurrentComment] = React.useState("");
+
+  const handleSubmitComment = () => {
+    
+
+    const requestBody = {
+      hospital_name: hospital,
+      comment: currentComment,
+    };
+
+
+    axios.post('http://localhost:8000/hospitals/comments', requestBody)
+    .then(function (response) {
+      comments.push(currentComment);
+      setCurrentComment("");
+    })
+    .catch(function (error) {
+      alert("Sorry, error posting comment")
+      console.log(error);
+    });
+  }
 
   React.useEffect(() => {
     // GET request using axios inside useEffect React hook
@@ -50,6 +74,24 @@ export default function HospitalPage() {
         })}
         {!isHospitalListLoading && comments.length === 0 && <ListItem>No comments yet!</ListItem>}
       </List>
+
+      <Box display="flex" flexDirection="row" alignItems="center">
+        <TextField
+          label="Leave a comment"
+          variant="outlined"
+          value={currentComment}
+          onChange={e => setCurrentComment(e.target.value)}
+          multiline
+        />
+        {currentComment !== "" && 
+          <Box ml={1}>
+            <Button variant="contained" onClick={handleSubmitComment}>
+              Submit
+            </Button>
+          </Box>
+        }
+      </Box>
+
 
     </Box>
   );
