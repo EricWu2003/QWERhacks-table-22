@@ -75,6 +75,13 @@ export default function Signup() {
 
   return (
     <Box m={2} maxWidth="400px" mx="auto">
+        <center>
+          <Stack spacing={3} direction="row" alignItems="center" justifyContent="center">
+            <img src="https://www.qwerhacks.com/media/frog.svg" height="50px" width="50px" alt="QWER hacks logo" />
+            <img src="https://www.qwerhacks.com/media/frog.svg" height="50px" width="50px" alt="QWER hacks logo" />
+            <img src="https://www.qwerhacks.com/media/frog.svg" height="50px" width="50px" alt="QWER hacks logo" />
+          </Stack>
+        </center>
       <Stack spacing={2} direction="column">
 
         <Typography>

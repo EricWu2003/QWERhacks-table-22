@@ -4,7 +4,7 @@ import React from "react";
 export default function About() {
   return (
     <Box m={2}>
-      <p>We are at the 22nd table for QWERHacks 2023!</p>
+      <center><h2>We are at the 22nd table for QWERHacks 2023!</h2></center>
       <List>Developers: 
       <ListItem>Annie Lu</ListItem>
       <ListItem>Kyle Machnicki</ListItem>
