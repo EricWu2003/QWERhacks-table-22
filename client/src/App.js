@@ -10,6 +10,7 @@ import Signup from "./Login/Signup.js"
 import Navbar from "./Navbar/Navbar.js";
 import About from "./About/About.js";
 import HospitalPage from "./HospitalPage/HospitalPage.js";
+import AI from "./AI/AI.js";
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { green, blue } from '@mui/material/colors';
@@ -18,10 +19,6 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import CssBaseline from '@mui/material/CssBaseline';
 import React from "react";
 
-
-const theme = createTheme({
- 
-});
 
 
 function App() {
@@ -36,6 +33,7 @@ function App() {
         <Route path="signup" element={<Signup />} />
         <Route path="about" element={<About />} />
         <Route path="hospitals/:hospital" element={<HospitalPage />} />
+        <Route path="ai" element={<AI />} />
       </>
     )
   );

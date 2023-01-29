@@ -15,6 +15,7 @@ export const LOGIN_URL = "/login";
 export const SIGNUP_URL = "/signup";
 export const ABOUT_URL = "/about";
 export const HOME_URL = "/";
+export const CHAT_GPT_URL = "/ai"
 
 
 export default function Navbar() {
@@ -52,6 +53,12 @@ export default function Navbar() {
         onClick={() => {window.location.href=LOGIN_URL;}}
       >
         Log In
+      </Button>
+      <Button
+        color="inherit"
+        onClick={() => {window.location.href=CHAT_GPT_URL;}}
+      >
+        Chat GPT
       </Button>
     </Toolbar>
   );
