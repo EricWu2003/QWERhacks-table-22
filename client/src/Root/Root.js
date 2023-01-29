@@ -1,7 +1,7 @@
 import React from "react";
 import 
 {
-  Box, Typography, TableContainer, Table, TableHead, TableRow, TableCell, TableBody
+  Box, Typography, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, CircularProgress
 } from '@mui/material';
 import axios from "axios";
 import Paper from '@mui/material/Paper';
@@ -9,13 +9,17 @@ import Paper from '@mui/material/Paper';
 
 export default function Root() {
   const [hospitals, setHospitals] = React.useState([]);
+  const [isHospitalListLoading, setIsHospitalListLoading] = React.useState(true);
   console.log(hospitals);
 
 
   React.useEffect(() => {
     // GET request using axios inside useEffect React hook
     axios.get('http://localhost:8000/hospitals')
-        .then(response => setHospitals(response.data));
+        .then(response => {
+          setHospitals(response.data);
+          setIsHospitalListLoading(false);
+        });
 
   // empty dependency array means this effect will only run once (when the component mounts)
   }, []);
@@ -39,6 +43,7 @@ export default function Root() {
           </TableRow>
         </TableHead>
         <TableBody>
+          {isHospitalListLoading && <CircularProgress />}
           {hospitals.map((row) => (
             <TableRow
               key={row.hospital_name}
