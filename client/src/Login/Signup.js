@@ -74,7 +74,7 @@ export default function Signup() {
 
 
   return (
-    <Box m={2} maxWidth="400px">
+    <Box m={2} maxWidth="400px" mx="auto">
       <Stack spacing={2} direction="column">
 
         <Typography>

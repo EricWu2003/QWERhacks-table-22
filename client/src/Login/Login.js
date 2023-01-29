@@ -58,7 +58,7 @@ export default function Login() {
   }
 
   return (
-    <Box m={2} maxWidth="400px">
+    <Box m={2} maxWidth="400px" mx="auto">
       <Stack spacing={2} direction="column">
         <img src="https://www.qwerhacks.com/media/frog.svg" height="50px" width="50px"/>
 
