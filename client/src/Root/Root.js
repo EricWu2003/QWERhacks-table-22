@@ -4,6 +4,7 @@ import
   Box, Typography, TableContainer, Table,
   TableHead, TableRow, TableCell, TableBody, CircularProgress,
   Link,
+  TextField,
 } from '@mui/material';
 import axios from "axios";
 import Paper from '@mui/material/Paper';
@@ -12,7 +13,13 @@ import Paper from '@mui/material/Paper';
 export default function Root() {
   const [hospitals, setHospitals] = React.useState([]);
   const [isHospitalListLoading, setIsHospitalListLoading] = React.useState(true);
-  console.log(hospitals);
+  const [searchString, setSearchString] = React.useState("");
+  // console.log(hospitals);
+
+  const filteredHospitals = hospitals.filter(h => {
+    return h.hospital_name.toLowerCase().includes(searchString.toLowerCase()) ||
+      h.hospital_location.toLowerCase().includes(searchString.toLowerCase());
+  })
 
 
   React.useEffect(() => {
@@ -33,6 +40,15 @@ export default function Root() {
         Here's a list of hospitals that we keep track of (table built using MUI):
       </Typography>
 
+      <Box m={2}>
+        <TextField 
+          sx={{width:"500px"}}
+          label="Search by name or location..."
+          value={searchString}
+          onChange={e => setSearchString(e.target.value)}
+        />
+      </Box>
+
       {/* refer to https://mui.com/material-ui/react-table/ */}
       <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -46,7 +62,7 @@ export default function Root() {
         </TableHead>
         <TableBody>
           {isHospitalListLoading && <CircularProgress />}
-          {hospitals.map((row) => (
+          {filteredHospitals.map((row) => (
             <TableRow
               key={row.hospital_name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
