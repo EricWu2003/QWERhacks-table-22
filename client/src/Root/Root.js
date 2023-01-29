@@ -35,7 +35,7 @@ export default function Root() {
 
 
   return (
-    <Box m={2}>
+    <Box my={2} mx={17}>
       <Typography>
         Here's a list of hospitals that we keep track of (table built using MUI):
       </Typography>
@@ -55,6 +55,7 @@ export default function Root() {
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
+            <TableCell>Website</TableCell>
             <TableCell align="right">Location</TableCell>
             <TableCell align="right">Rating</TableCell>
             <TableCell align="right">Comment Count</TableCell>
@@ -71,6 +72,15 @@ export default function Root() {
                 <Link href={`/hospitals/${row.hospital_name}`}>
                   {row.hospital_name}
                 </Link>
+              </TableCell>
+              <TableCell component="th" scope="row">
+                <Box maxWidth="200px">
+                  <Typography overflow="hidden" textOverflow="ellipsis" noWrap>
+                    <Link href={row.hospital_url}>
+                      Home Page
+                    </Link>
+                  </Typography>
+                </Box>
               </TableCell>
               <TableCell align="right">{row.hospital_location}</TableCell>
               <TableCell align="right">{row.hospital_rating}</TableCell>
