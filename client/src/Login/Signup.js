@@ -118,7 +118,9 @@ export default function Signup() {
         </FormControl>
 
         {/* signup button */}
-        <Button variant="contained">Sign up</Button>
+        <Button variant="contained"
+          onClick={handleSignUp}
+        >Sign up</Button>
 
         {/* return to login */}
         <Typography>Already a user? Click here to {}
